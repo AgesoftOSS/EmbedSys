@@ -16,6 +16,29 @@ private final String statusFont = "Verdana";
 private final int statusFontSize = 50;
 ```
 
+Go to the `StartUp()` method and add your own code for the start up of your embedded system:
+
+```java
+Jframe mainFrame = new Jframe();
+
+private void StartUp(){
+        // Creates the startup frame.
+        createStartupFrame();
+
+        // Add your own functions / code here:
+        // Example: Some calculation before the app finished booting!
+        int i = 69;
+        if(i != 420){
+            i += 420;
+        } else {
+            System.exit(-1);
+        }
+
+        // If finished this function gets called, replace null with your main frame!
+        startedUp(mainFrame);
+    }
+```
+
 Then Start it:
 
 ```java
@@ -29,7 +52,7 @@ public static void main(String[] args) {
 
 **Keyboard:**
 
-This application is designed to be used without a keyboard that's why we recomend to avoid running this software in a machine with a keyword.
+This application is designed to be used without a keyboard that's why we recomend to avoid running this software in a machine with a keyword because we only could disable alt + f4!
 
 **Autorun:**
 

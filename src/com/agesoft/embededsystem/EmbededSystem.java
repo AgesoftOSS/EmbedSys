@@ -34,7 +34,7 @@ public class EmbededSystem {
      * Starts up the application
      * @since v0.1
      * */
-    private void StartUp(){
+    private void createStartupFrame(){
 
         companynver.setText("© 2022 " + CompanyName);
         companynver.setFont(new Font("Consolas", Font.PLAIN, 20));
@@ -59,6 +59,28 @@ public class EmbededSystem {
         sys.add(companynver, BorderLayout.SOUTH);
 
         sys.setVisible(true);
+    }
+
+    /**
+     * When started up this function gets called!<br>
+     * <b><code>finalApp</code></b> - pass your main frame in it!
+     * @since v0.1
+     */
+    private void startedUp(JFrame finalApp){
+        sys.remove(statusLabel);
+        sys.remove(companynver);
+
+        finalApp.setVisible(true);
+    }
+
+    private void StartUp(){
+        // Creates the startup frame.
+        createStartupFrame();
+
+        // Add your own functions / code here
+
+        // If finished this function gets called, replace null with your main frame!
+        startedUp(null);
     }
 
     /**
