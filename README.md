@@ -19,23 +19,35 @@ private final int statusFontSize = 50;
 Go to the `StartUp()` method and add your own code for the start up of your embedded system:
 
 ```java
-Jframe mainFrame = new Jframe();
+private Jframe mainFrame = new Jframe();
 
 private void StartUp(){
         // Creates the startup frame.
         createStartupFrame();
 
-        // Add your own functions / code here:
-        // Example: Some calculation before the app finished booting!
-        int i = 69;
-        if(i != 420){
-            i += 420;
-        } else {
-            System.exit(-1);
+        try {
+
+            // Add your own functions / code here:
+            // Example: Some calculation before the app finished booting!
+            
+            int i = 69;
+            if(i != 420){
+                i += 420;
+            } else {
+                System.exit(-1);
+            }
+
+        } catch (Exception e){
+            e.printStackTrace();
+            unavailableDeviceError();
         }
 
-        // If finished this function gets called, replace null with your main frame!
-        startedUp(mainFrame);
+        if(availability){
+            // replace null with your main frame!
+            startedUp(null);
+        } else {
+            unavailableDeviceError();
+        }
     }
 ```
 

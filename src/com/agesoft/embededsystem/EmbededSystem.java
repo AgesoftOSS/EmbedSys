@@ -30,6 +30,9 @@ public class EmbededSystem {
     private final String statusFont = "Verdana";
     private final int statusFontSize = 50;
 
+    // If true then nothing happends | if false then the machine is bricked till the bool is set to true again
+    private final boolean availability = true;
+
     /**
      * Starts up the application
      * @since v0.1
@@ -62,6 +65,15 @@ public class EmbededSystem {
     }
 
     /**
+     * will stop the start up and put the device into the unavailability mode. it can be triggered if the start-up was faulty or if the availability bool is false
+     * @since v0.1
+     */
+    private void unavailableDeviceError(){
+        sys.remove(companynver);
+        statusLabel.setText("This Machine is currently unavailable!"); // Restart the application to try again.
+    }
+
+    /**
      * When started up this function gets called!<br>
      * <b><code>finalApp</code></b> - pass your main frame in it!
      * @since v0.1
@@ -77,10 +89,23 @@ public class EmbededSystem {
         // Creates the startup frame.
         createStartupFrame();
 
-        // Add your own functions / code here
+        // try catch block if there is any errors in it. if it has it will be put in unavailability mode
+        try {
 
-        // If finished this function gets called, replace null with your main frame!
-        startedUp(null);
+            // Add your own functions / code here:
+
+        } catch (Exception e){
+            e.printStackTrace();
+            unavailableDeviceError();
+        }
+
+        // if finished this if statement gets called if the machine is allowed to be booted.
+        if(availability){
+            // replace null with your main frame!
+            startedUp(null);
+        } else {
+            unavailableDeviceError();
+        }
     }
 
     /**
