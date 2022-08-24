@@ -102,7 +102,7 @@ public class EmbededSystem {
         // if finished this if statement gets called if the machine is allowed to be booted.
         if(availability){
             // replace null with your main frame!
-            startedUp(null);
+            startedUp(new JFrame("Replace this frame with your frame."));
         } else {
             unavailableDeviceError();
         }
